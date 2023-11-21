@@ -12,15 +12,11 @@ app.use(compression())
 
 //init DB
 require('./db/init.mongodb')
-const { checkOverLoad } = require('./helpers/check.connect')
-checkOverLoad()
+// const { checkOverLoad } = require('./helpers/check.connect')
+// checkOverLoad()
 
 //init routes
-app.get('/', (req, res) => {
-  return res.status(200).json({
-    message: 'Welcome!!',
-  })
-})
+app.use('/', require('./routes'))
 // handle errors
 
 module.exports = app
