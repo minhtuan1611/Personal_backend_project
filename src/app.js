@@ -9,11 +9,11 @@ const compression = require('compression')
 app.use(helmet())
 app.use(morgan('dev'))
 app.use(compression())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 //init DB
 require('./db/init.mongodb')
-// const { checkOverLoad } = require('./helpers/check.connect')
-// checkOverLoad()
 
 //init routes
 app.use('/', require('./routes'))

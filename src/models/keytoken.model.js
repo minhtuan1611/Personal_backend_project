@@ -13,7 +13,7 @@ var keyTokenSchema = new Schema(
       ref: 'Shop',
     },
     publicKey: {
-      type: Sring,
+      type: String,
       required: true,
     },
     refreshToken: {
@@ -27,4 +27,4 @@ var keyTokenSchema = new Schema(
   }
 )
 
-module.exports = mongoose.model(DOCUMENT_NAME, keyTokenSchema)
+module.exports = model(DOCUMENT_NAME, keyTokenSchema)
