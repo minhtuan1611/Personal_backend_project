@@ -12,6 +12,7 @@ const {
   AuthFailureError,
 } = require('../core/error.response')
 const { findByEmail } = require('./shop.service')
+const { keys } = require('lodash')
 
 const RoleShop = {
   SHOP: 'SHOP',
@@ -29,6 +30,12 @@ const RoleShop = {
 */
 
 class AccessService {
+  static logout = async (keyStore) => {
+    const delKey = await KeyTokenService.removeKeyById(keyStore._id)
+    console.log({ delKey })
+    return delKey
+  }
+
   static login = async ({ email, password, refreshToken = null }) => {
     //1.
     const foundShop = await findByEmail({ email })
